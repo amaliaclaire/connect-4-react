@@ -7,6 +7,7 @@ export default class GameLogic {
     {i: -1, j: 1} // Other diagonal
   ];
 
+
   constructor(width, height) {
     this._width = width;
     this._height = height;
@@ -54,7 +55,7 @@ export default class GameLogic {
         this._activePlayer = this._activePlayer ? 0 : 1;
         // this lines means if it is falsey - if it's truthy set it to 0
         // console.log('this._activePlayer', this._activePlayer);
-        return 
+        return
       }
     }
   }
