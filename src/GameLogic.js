@@ -52,10 +52,19 @@ export default class GameLogic {
         }
 
         this._activePlayer = this._activePlayer ? 0 : 1;
-        return;
+        // this lines means if it is falsey - if it's truthy set it to 0
+        // console.log('this._activePlayer', this._activePlayer);
+        return 
       }
     }
   }
+
+  get activePlayer () {
+    return this._activePlayer;
+    // this._activePlayer state is up to date to showcase which player "won"
+  }
+
+
 
   reset() {
     this._inProgress = true;

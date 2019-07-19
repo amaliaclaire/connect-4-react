@@ -6,8 +6,11 @@ export default class GameBoard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      player: this.props.logic.activePlayer,
+      // ^ this is the most up to date state of this player from gameLogic
       board: this.props.logic.boardState,
       inProgress: this.props.logic.inProgress
+
     };
   }
 
@@ -17,11 +20,17 @@ export default class GameBoard extends React.Component {
     const buttons = [];
     for (let i = 0; i < logic.width; i++) {
       buttons.push(<th><button class="myBtn" disabled={!this.state.inProgress} onClick={e => this.drop(logic, i)}>Drop</button></th>)
+
+
     }
+
+
+    console.log('player', this.state.player);
 
 
     return (
       <div>
+        <a>Current Player {this.state.player}</a>
         <table className="board">
           <tr>
             {buttons}
@@ -39,6 +48,7 @@ export default class GameBoard extends React.Component {
             ))
           }
         </table>
+        <p></p>
 
         <button onClick={e => this.reset(logic)}>Reset</button>
       </div>
@@ -48,9 +58,12 @@ export default class GameBoard extends React.Component {
   drop(logic, i) {
     logic.drop(i);
     this.setState({
+      player: this.props.logic.activePlayer,
+      // we force the state of  ._activePlayer to render to the board
       board: logic.boardState,
       inProgress: this.props.logic.inProgress
     });
+    console.log(this.state.player)
   }
 
   reset(logic) {

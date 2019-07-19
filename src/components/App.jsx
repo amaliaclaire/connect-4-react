@@ -5,14 +5,16 @@ import GameLogic from '../GameLogic'
 
 class App extends React.Component {
   constructor() {
-    super(); 
+    super();
     this.gameLogic = new GameLogic(7, 6);
+
+
   }
 
   render () {
     return (
       <div>
-        <GameBoard logic={this.gameLogic}/>
+        <GameBoard logic={this.gameLogic} />
       </div>
     )
   }
