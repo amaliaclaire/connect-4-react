@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Game from './components/Game.jsx';
+import App from './components/App.jsx';
 import './index.css';
 
 
 
 
 ReactDOM.render(
-  <Game />,
+  <App />,
   document.querySelector('#root')
 );

@@ -1,37 +1,24 @@
 import React from 'react';
-import './components/index.css';
-import Square from './Square.jsx';
+import '../index.css';
 
+const data = [
+  [1,2,3],
+  [4,5,6],
+  [7,8,9],
+]
 
-export default class Board extends React.Component {
-  renderSquare(i, squareShade) {
-    return <Square
-      style={this.props.squares[i] ? this.props.squares[i].style : null}
-      shade={squareShade}
-      onClick={() => this.props.onClick(i)}
-    />
-  }
-
+export default class GameBoard extends React.Component {
   render() {
-      const board = [];
-      for(let i = 0; i < 6; i++){
-        const squareRows = [];
-        for(let j = 0; j < 5; j++){
-          const squareShade = (isEven(i) && isEven(j)) || (!isEven(i) && !isEven(j))? "light-square" : "dark-square";
-          squareRows.push(this.renderSquare((i*6)+ j, squareShade));
+    return (
+      <table>
+        {
+          data.map((row, index) => (
+            <tr key={row[0]}>
+            {row.map(cellId => <th key={cellId}>{cellId}</th>)}
+            </tr>
+          ))
         }
-        board.push(<div className="board-row">{squareRows}</div>)
-      }
-
-      return (
-        <div>
-          {board}
-        </div>
-      );
-    }
+      </table>
+    );
   }
-
-
-function isEven(num){
-  return num % 2 == 0
 }
