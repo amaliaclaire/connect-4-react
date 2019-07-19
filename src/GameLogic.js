@@ -1,6 +1,8 @@
 
 export default class GameLogic {
   constructor(width, height) {
+    this._width = width;
+
     this._boardState = [];
     for (let row = 0; row < height; row++) {
       this._boardState[row] = [];
@@ -10,7 +12,15 @@ export default class GameLogic {
     }
   }
 
+get width () {
+  return this._width;
+}
+
   get boardState() {
     return this._boardState;
+  }
+
+  drop () {
+    
   }
 }
