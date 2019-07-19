@@ -68,7 +68,8 @@ export default class GameBoard extends React.Component {
     });
   }
 
-// 8. reset the state of the board to the beginning of the game. This discards all game progress. 
+// 8. reset the state of the board to the beginning of the game. This discards all game progress.
+// *** go to GameLogic.jsx
   reset(logic) {
     logic.reset();
     this.setState({
