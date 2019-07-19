@@ -1,18 +1,18 @@
 import React from 'react';
-import Gameboard from './GameBoard.jsx'
-import Board from './Board.js'
-
+import GameBoard from './GameBoard'
+import GameLogic from '../GameLogic'
 
 
 class App extends React.Component {
-
-
+  constructor() {
+    super(); 
+    this.gameLogic = new GameLogic(7, 6);
+  }
 
   render () {
     return (
       <div>
-      < Board />
-
+        <GameBoard logic={this.gameLogic}/>
       </div>
     )
   }
