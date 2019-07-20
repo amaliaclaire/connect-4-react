@@ -8,20 +8,26 @@
 
   .board td{
     width: 50px;
-    height: 50px; 
+    height: 50px;
   }
 
+.Connect4-Title {
+  text-align: center;
+}
   /* Make each piece square - 32x32, set the border-radius to 16px (so that it appears round) and center it using margin-left
   and margin-right: auto */
   .piece {
-    height: 32px;
-    width: 32px;
+    height: 16px;
+    width: 16px;
     display:block;
-    border-radius: 16px;
+    border-radius: 32px;
     margin-left: auto;
     margin-right: auto;
+    background-color: white;
   }
 
+.card-explanation {
+}
   /* Empty (no player) will have a light-grey background */
   .empty {
     background-color: #DDDDDD; /* hex colors were used, but rgb/rgba could be used as well */

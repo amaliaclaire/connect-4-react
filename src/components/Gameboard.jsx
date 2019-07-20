@@ -1,4 +1,6 @@
 import React from 'react';
+import { Grid, Button, Card } from 'semantic-ui-react'
+
 import '../index.css';
 
 
@@ -22,35 +24,63 @@ export default class GameBoard extends React.Component {
 
     const buttons = [];
     for (let i = 0; i < logic.width; i++) {
-      buttons.push(<th><button class="myBtn" disabled={!this.state.inProgress} onClick={e => this.drop(logic, i)}>Drop</button></th>)
+      buttons.push(<th><Button basic color='black' class="myBtn" disabled={!this.state.inProgress} onClick={e => this.drop(logic, i)}>Drop</Button></th>)
       // 4. we render the buttons and make the drop() method the default callback function for each button.
     }
 
     return (
       <div>
+        <h1 className="Connect4-Title">Connect4</h1>
+
+      <Grid divided='vertically'>
+        <Grid.Row columns={2}>
+          <Grid.Column>
+          <table className="board">
+            <tr>
+              {buttons}
+            </tr>
+            {
+              this.state.board.map((row, index) => (
+                <tr key={index}>
+                  {
+                    row.map((cell, index) =>
+                      <td className="board_square">
+
+                      <td className={cell === null ? 'empty piece' : `player${cell} piece`}  key={index}></td>
+
+
+                      </td>
+                    )
+                  }
+                </tr>
+              ))
+            }
+          </table>
+          </Grid.Column>
+          <Grid.Column>
+
+          <Card>
+            <Card.Content header='How To Play' />
+            <Card.Content className="card-explanation">
+            <p>
+                Do you go up, to the side, or diagonally? Start in the middle or at the edge? It's your choice in Connect 4 Game. Stack the 4 discs vertically, line them up side to side, or go on the diagonal. As long as you get 4-in-a-row, you win. Stay one step ahead of your opponent and block their attempts to get to 4-in-a-row first. Play all 3 Connect 4 games, and crush the competition!
+                </p>
+            </Card.Content>
+          </Card>
+
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
         <a>Current Player {this.state.player}</a>
-        <table className="board">
-          <tr>
-            {buttons}
-          </tr>
-          {
-            this.state.board.map((row, index) => (
-              <tr key={index}>
-                {
-                  row.map((cell, index) =>
-                    <td  className={cell === null ? 'empty' : `player${cell}`} key={index}>
-                    </td>
-                  )
-                }
-              </tr>
-            ))
-          }
-        </table>
+
         <p></p>
 
-        <button onClick={e => this.reset(logic)}>Reset</button>
+        <Button basic color='red' onClick={e => this.reset(logic)}>Reset</Button>
       </div>
     );
+
+    // for each cell you attach a .piece to it.
+
 
     // 5. Where the buttons with onClick functionality will be rendered.
     // Here we map through the board and checks if the cell className is "empty". If it is empty it remains empty, ELSE it turns into className="player cellNumber"
